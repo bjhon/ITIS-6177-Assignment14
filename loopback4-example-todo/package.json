@@ -1,0 +1,77 @@
+{
+  "name": "@loopback/example-todo",
+  "description": "Tutorial example on how to build an application with LoopBack 4",
+  "version": "8.0.1",
+  "keywords": [
+    "loopback",
+    "LoopBack",
+    "example",
+    "tutorial",
+    "CRUD",
+    "models",
+    "todo"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "IBM Corp. and LoopBack contributors",
+  "copyright.owner": "IBM Corp. and LoopBack contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loopbackio/loopback-next.git",
+    "directory": "examples/todo"
+  },
+  "engines": {
+    "node": "18 || 20"
+  },
+  "scripts": {
+    "build": "lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "clean": "lb-clean *example-todo*.tgz dist *.tsbuildinfo package",
+    "lint": "npm run prettier:check && npm run eslint",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "lb-eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "pretest": "npm run rebuild",
+    "test": "lb-mocha \"dist/__tests__/**/*.js\"",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
+    "verify": "npm pack && tar xf loopback-todo*.tgz && tree package && npm run clean",
+    "premigrate": "npm run build ",
+    "migrate": "node ./dist/migrate",
+    "preopenapi-spec": "npm run build",
+    "openapi-spec": "node ./dist/openapi-spec",
+    "rebuild": "npm run clean && npm run build",
+    "prestart": "npm run rebuild",
+    "start": "node ."
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@loopback/boot": "^7.0.1",
+    "@loopback/core": "^6.0.1",
+    "@loopback/repository": "^7.0.1",
+    "@loopback/rest": "^14.0.1",
+    "@loopback/rest-explorer": "^7.0.1",
+    "@loopback/service-proxy": "^7.0.1",
+    "loopback-connector-rest": "^5.0.1",
+    "morgan": "^1.10.0",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@loopback/build": "^11.0.1",
+    "@loopback/eslint-config": "^15.0.1",
+    "@loopback/http-caching-proxy": "^6.0.1",
+    "@loopback/testlab": "^7.0.1",
+    "@types/lodash": "^4.17.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^16.18.95",
+    "eslint": "^8.57.0",
+    "lodash": "^4.17.21",
+    "typescript": "~5.2.2"
+  },
+  "gitHead": "2bdb95fe5122f3664368261c12e3037ee8c71c27"
+}
